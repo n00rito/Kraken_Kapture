@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee7e97ff7f77dc4f8cbd5a83e01d57d, type: 3}
+  m_Name: JacksonFirst
+  m_EditorClassIdentifier: 
+  speakerName: Jackson
+  paragraphs:
+  - Hey, I'm Jackson, but you can call me Jack.
+  - Just so long as you buy a boat from me.
+  - 'I got the best fishing vessels in town. Trust me, you won''t regret it.
+
+'

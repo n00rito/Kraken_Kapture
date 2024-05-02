@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ee7e97ff7f77dc4f8cbd5a83e01d57d, type: 3}
+  m_Name: Test Conversation
+  m_EditorClassIdentifier: 
+  speakerName: Ahmed
+  paragraphs:
+  - 'Hey there, I''m Ahmed, I own and run the equipment shop.
+
+'
+  - 'Wait, you''re that guy people have been talking about... Sayed, right? Didn''t
+    you feed your dad to the Kraken?
+
+'
+  - 'Oh well, that''s none of my business.
+
+'
+  - 'So.. you interested in buying anything?
+
+'
