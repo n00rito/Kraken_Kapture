@@ -5,11 +5,11 @@ using UnityEngine.InputSystem;
 
 public class BoatMovement : MonoBehaviour
 {
-    [SerializeField] SpriteRenderer _interactSprite;
+    [SerializeField] private SpriteRenderer _interactSprite;
     [SerializeField] private float speed = 4f; // Speed of the boat
     private Transform _playerTransform;
     private const float INTERACT_DISTANCE = 3F;
-    private Vector2 movement; // Direction of movement
+    private Vector2 movement; // Direction of movemen
     public Rigidbody2D rb; // Rigidbody component of the boat
     private Animator animator; // Animator component of the boat
     private bool isMovementEnabled = false; // Flag to track if movement is enabled
@@ -24,6 +24,8 @@ public class BoatMovement : MonoBehaviour
     private void Start()
     {
         _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        //animator.SetBool("IsSailing", false);
+       // animator.SetBool("isPlayerInside", false);
     }
 
     private void Update()
@@ -78,20 +80,35 @@ public class BoatMovement : MonoBehaviour
 
     private void OnMovement(InputValue value)
     {
+        if (isPlayerInside)
+        {
+            movement = Vector2.zero;
+           // animator.SetBool("isPlayerInside", true);
+            //animator.SetBool("IsSailing", true);
+            _interactSprite.gameObject.SetActive(false);
+
+
+        } // Don't move if the player is inside the boat
+
         movement = value.Get<Vector2>();
 
         if (movement.x != 0 || movement.y != 0)
-        {
-            animator.SetFloat("X", movement.x);
-            animator.SetFloat("Y", movement.y);
-            animator.SetBool("IsSailing", true);
-        }
-        else
-        {
-            animator.SetBool("IsSailing", false);
-        }
-    }
-
+            if (isMovementEnabled)
+            {
+                animator.SetFloat("X", movement.x);
+                animator.SetFloat("Y", movement.y);
+                animator.SetBool("IsSailing", true);
+                animator.SetBool("isMovementEnabled", true);
+                animator.SetBool("isPlayerInside", true);
+            }
+            else
+            {
+                animator.SetBool("IsSailing", false);
+                animator.SetBool("isMovementEnabled", false);
+                animator.SetBool("isPlayerInside", false);// Change animation state to not sailing
+                                                            //animator.SetBool("isPlayerInside", false);
+            }
+}
 
 
     private void FixedUpdate()
@@ -99,7 +116,7 @@ public class BoatMovement : MonoBehaviour
         if (!isMovementEnabled) return; // Exit if movement is not enabled
 
         // Move the boat based on the input direction and speed
-     //   rb.MovePosition(rb.position + Vector2.one);
+        //rb.MovePosition(rb.position + Vector2.one);
         rb.MovePosition(rb.position + movement * speed * Time.fixedDeltaTime);
 
         Debug.Log($"delta movement {movement * speed * Time.fixedDeltaTime}");

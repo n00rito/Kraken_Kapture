@@ -19,29 +19,30 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnMovement(InputValue value)
     {
-        if (isPlayerInside)
         {
-            movement = Vector2.zero;
-            animator.SetBool("isPlayerInside", true);
+            if (isPlayerInside)
+            {
+                animator.SetBool("isPlayerInside", true);
 
 
-        } // Don't move if the player is inside the boat
+            } // Don't move if the player is inside the boat
 
-        movement = value.Get<Vector2>();
+            movement = value.Get<Vector2>();
 
-        if (movement.x != 0 || movement.y != 0)
-        {
-            animator.SetFloat("X", movement.x);
-            animator.SetFloat("Y", movement.y);
-            animator.SetBool("IsWalking", true);
-        }
-        else
-        {
-            animator.SetBool("IsWalking", false);
+            if (movement.x != 0 || movement.y != 0)
+            {
+                animator.SetFloat("X", movement.x);
+                animator.SetFloat("Y", movement.y);
+                animator.SetBool("IsWalking", true);
+            }
+            else
+            {
+                animator.SetBool("IsWalking", false);
+            }
         }
     }
 
-    private void FixedUpdate()
+        private void FixedUpdate()
     {
         if (isPlayerInside) return; // Don't move if the player is inside the boat
 
@@ -55,6 +56,6 @@ public class PlayerMovement : MonoBehaviour
         rb.isKinematic = inside;
 
         // Update animation based on player inside the boat
-        animator.SetBool("isPlayerInside", isPlayerInside);
+        animator.SetBool("isPlayerInside", true);
     }
 }
