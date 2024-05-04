@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5276461838422722629}
   - component: {fileID: 5274131310923427501}
   - component: {fileID: 5905748544590204953}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 5936473356314444253}
   - component: {fileID: 1324577352578290734}
   - component: {fileID: 6334325070622545758}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: DamageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,8 +176,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280229772
+  m_fontColor: {r: 0.5509434, g: 0.12058382, b: 0.12058382, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7616846153903285260}
   - component: {fileID: 1734788458349343328}
   - component: {fileID: 1615663523377590127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: PopUpDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -357,3 +357,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitialVelocity: {x: 2, y: 10}
   rb: {fileID: 7616846153903285260}
+  lifetime: 0.7
+  hitFromRight: 0

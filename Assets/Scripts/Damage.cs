@@ -6,19 +6,8 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public int damage = 10;
-    private Health playerHealth;
+    public Health playerHealth;
     public GameObject popUpPrefab;
-
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -27,6 +16,8 @@ public class Damage : MonoBehaviour
             if (playerHealth == null)
             {
                 playerHealth = collision.gameObject.GetComponent<Health>();
+
+                playerHealth.TakeDamage(damage);
             }
 
            GameObject popUp = Instantiate (popUpPrefab, collision.transform.position, Quaternion.identity);

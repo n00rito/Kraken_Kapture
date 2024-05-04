@@ -7,11 +7,13 @@ public class Shark : MonoBehaviour
     public float moveSpeed = 3f; // Speed at which the shark moves
     private Transform player; // Reference to the player's transform
     private bool canFollowPlayer = false; // Flag to indicate if the shark can follow the player
+    private Rigidbody2D rb;
 
     void Start()
     {
         // Find the player GameObject and get its transform
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform; 
+        rb = GetComponent<Rigidbody2D>();
 
     }
  
