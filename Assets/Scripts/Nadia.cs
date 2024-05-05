@@ -6,6 +6,7 @@ public class Nadia : NPC, ITalkable
 {
     [SerializeField] private DialogueText dialogueText;
     [SerializeField] private DialogueController dialogueController;
+    //public GameObject shopMenu;
     public override void Interact()
     {
         Talk(dialogueText);

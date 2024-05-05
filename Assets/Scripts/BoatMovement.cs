@@ -7,6 +7,7 @@ public class BoatMovement : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer _interactSprite;
     [SerializeField] private float speed = 4f; // Speed of the boat
+    public AudioClip sailingClip;
     private Transform _playerTransform;
     private const float INTERACT_DISTANCE = 3F;
     private Vector2 movement; // Direction of movemen
@@ -14,11 +15,15 @@ public class BoatMovement : MonoBehaviour
     private Animator animator; // Animator component of the boat
     private bool isMovementEnabled = false; // Flag to track if movement is enabled
     private bool isPlayerInside = false;
+    private AudioSource audioSource; // Reference to AudioSource component
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>(); // Get AudioSource component
+        audioSource.clip = sailingClip;
     }
 
     private void Start()
@@ -48,6 +53,9 @@ public class BoatMovement : MonoBehaviour
             _interactSprite.gameObject.SetActive(true);
         }
     }
+
+
+
 
     private bool IsWithinInteractDistance()
     {
@@ -100,13 +108,18 @@ public class BoatMovement : MonoBehaviour
                 animator.SetBool("IsSailing", true);
                 animator.SetBool("isMovementEnabled", true);
                 animator.SetBool("isPlayerInside", true);
+
+
+                if (!audioSource.isPlaying)
+                    audioSource.Play();
             }
             else
             {
                 animator.SetBool("IsSailing", false);
                 animator.SetBool("isMovementEnabled", false);
-                animator.SetBool("isPlayerInside", false);// Change animation state to not sailing
-                                                            //animator.SetBool("isPlayerInside", false);
+                animator.SetBool("isPlayerInside", false);
+                audioSource.Stop();// Change animation state to not sailing
+                                   //animator.SetBool("isPlayerInside", false);
             }
 }
 
