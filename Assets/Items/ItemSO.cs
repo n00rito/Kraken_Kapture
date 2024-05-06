@@ -5,13 +5,13 @@ using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
 [CreateAssetMenu]
-public class ItemSO : ScriptableObject, IExchangeable<int>
+public class ItemSO : ScriptableObject
 {
     public string itemName;
     public StatToChange statToChange = new StatToChange();
     public int amountToChangeStat;
 
-    [SerializeField] private int value = 1;
+    public int price;
 
     public bool UseItem()
     {
@@ -40,9 +40,5 @@ public class ItemSO : ScriptableObject, IExchangeable<int>
         health
     };
 
-    public int GetPrice()
-    {
-        return value;
-    }
-
+ 
 }

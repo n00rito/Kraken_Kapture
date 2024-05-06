@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class Health : MonoBehaviour
     public int maxHealth = 75;
     public Slider slider;
     public TextMeshProUGUI healthText;
+    Vector2 startPos;
+    public AudioClip ouchSound;
+
+    private AudioSource audioSource;
+    // public AudioClip ouchClip;
+    // private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -18,22 +25,31 @@ public class Health : MonoBehaviour
         health = maxHealth;
         slider.maxValue = maxHealth;
         slider.value = health;
-        UpdateHealthText(); // Update the health text initially
+        UpdateHealthText();
+        //audioSource = GetComponent<AudioSource>();
+        // audioSource.clip = ouchClip;
     }
 
-    public void TakeDamage(int amount)
+            public void TakeDamage(int amount)
     {
         health -= amount;
         slider.value = health;
-        UpdateHealthText(); // Update the health text after taking damage
+        UpdateHealthText();
 
         if (health <= 0)
         {
             Destroy(gameObject);
+            SceneManager.LoadScene(1);
         }
     }
 
-    public void RestoreHealth(int amount)
+    public void PlaySoundEffect()
+    {
+        audioSource.Play();
+    }
+
+
+public void RestoreHealth(int amount)
     { 
         health += amount;
         slider.value = health;

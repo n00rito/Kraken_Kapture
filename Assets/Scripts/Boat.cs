@@ -24,5 +24,30 @@ public class Boat : MonoBehaviour, IInteractable
             // Update player movement script
             player.GetComponent<PlayerMovement>().SetPlayerInside(true);
         }
+        else
+        {
+            ExitBoat();
+        }
+        }
+
+
+
+    private void ExitBoat()
+{
+    // Check if the player is inside the boat
+    if (isPlayerInside)
+    {
+        // Move the player out of the boat
+        player.transform.parent = null; // Remove player from being a child of the boat
+        isPlayerInside = false; // Update flag to indicate the player is not inside the boat
+
+            // Disable boat movement
+            GetComponent<BoatMovement>().DisableMovement();
+
+
+            // Update player movement script
+            player.GetComponent<PlayerMovement>().SetPlayerInside(false);
     }
 }
+}
+

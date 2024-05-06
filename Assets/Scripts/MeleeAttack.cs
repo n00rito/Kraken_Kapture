@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class MeleeAttack : MonoBehaviour
 {
@@ -11,18 +12,18 @@ public class MeleeAttack : MonoBehaviour
     public float weaponRange;
     public int weaponDamage;
     public LayerMask enemyLayer;
+    public ParticleSystem attackParticles;
 
     public float KBForce;
-
 
     // Start is called before the first frame update
     void Update()
     {
-        if(Input.GetButtonDown("SpearSlash")) 
+        if (Input.GetButtonDown("SpearSlash"))
         {
             StartCoroutine(Attack());
-
         }
+
     }
 
     IEnumerator Attack()

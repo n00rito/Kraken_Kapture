@@ -29,4 +29,10 @@ public class Wallet : MonoBehaviour
         money -= amount;
         onMoneyChange?.Invoke(-amount, money);
     }
+
+    public int GetMoney()
+    {
+        return money;
+    }
 }
+

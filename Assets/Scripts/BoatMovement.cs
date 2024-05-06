@@ -5,11 +5,9 @@ using UnityEngine.InputSystem;
 
 public class BoatMovement : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer _interactSprite;
     [SerializeField] private float speed = 4f; // Speed of the boat
     public AudioClip sailingClip;
     private Transform _playerTransform;
-    private const float INTERACT_DISTANCE = 3F;
     private Vector2 movement; // Direction of movemen
     public Rigidbody2D rb; // Rigidbody component of the boat
     private Animator animator; // Animator component of the boat
@@ -33,33 +31,20 @@ public class BoatMovement : MonoBehaviour
        // animator.SetBool("isPlayerInside", false);
     }
 
-    private void Update()
+    void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame && IsWithinInteractDistance())
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            // Interact with the boat
-            Interact();
+            if (!isPlayerInside)
+            {
+                Interact();
+            }
+            else
+            {
+                ExitBoat(); // Call method to exit the boat
+                animator.SetBool("isPlayerInside", false);
+            }
         }
-
-        if (_interactSprite.gameObject.activeSelf && !IsWithinInteractDistance())
-        {
-            // Turn off the sprite
-            _interactSprite.gameObject.SetActive(false);
-        }
-
-        else if (!_interactSprite.gameObject.activeSelf && IsWithinInteractDistance())
-        {
-            // Turn on the sprite
-            _interactSprite.gameObject.SetActive(true);
-        }
-    }
-
-
-
-
-    private bool IsWithinInteractDistance()
-    {
-        return Vector2.Distance(_playerTransform.position, transform.position) < INTERACT_DISTANCE;
     }
 
     public void Interact()
@@ -80,10 +65,38 @@ public class BoatMovement : MonoBehaviour
                 playerMovement.SetPlayerInside(true);
         }
     }
+    public void ExitBoat()
+    {
+        DisableMovement();
+        {
+            // Move the player out of the boat
+            _playerTransform.parent = null;
+            isPlayerInside = false;
+            animator.SetBool("isPlayerInside", false);
+
+            // Disable boat movement
+            DisableMovement();
+
+            // Update player movement script
+            var playerMovement = _playerTransform.GetComponent<PlayerMovement>();
+            if (playerMovement != null)
+                playerMovement.SetPlayerInside(false);
+        }
+    }
+
+    public void DisableMovement()
+    {
+        isMovementEnabled = false;
+        animator.SetBool("IsSailing", false);
+        animator.SetBool("isPlayerInside", false);
+    }
+
 
     public void EnableMovement()
     {
         isMovementEnabled = true;
+        animator.SetBool("IsSailing", true);
+        animator.SetBool("isPlayerInside", true);
     }
 
     private void OnMovement(InputValue value)
@@ -93,7 +106,6 @@ public class BoatMovement : MonoBehaviour
             movement = Vector2.zero;
            // animator.SetBool("isPlayerInside", true);
             //animator.SetBool("IsSailing", true);
-            _interactSprite.gameObject.SetActive(false);
 
 
         } // Don't move if the player is inside the boat
@@ -115,7 +127,7 @@ public class BoatMovement : MonoBehaviour
             }
             else
             {
-                animator.SetBool("IsSailing", false);
+                DisableMovement();
                 animator.SetBool("isMovementEnabled", false);
                 animator.SetBool("isPlayerInside", false);
                 audioSource.Stop();// Change animation state to not sailing

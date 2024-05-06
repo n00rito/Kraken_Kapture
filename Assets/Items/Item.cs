@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Item : MonoBehaviour, IExchangeable<int>
+public class Item : MonoBehaviour
 {
     [SerializeField] public string itemName;
 

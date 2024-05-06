@@ -4,20 +4,12 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private Dictionary<ItemSO, int> inventory = new Dictionary<ItemSO, int>();
 
     public GameObject inventoryMenu; // Reference to the inventory panel UI
     private bool menuActivated; // Flag to track if the inventory is open
     public ItemSlot[] itemSlot;
 
     public ItemSO[] itemSOs;
-
-    public delegate void OnInventoryChange();
-    public OnInventoryChange onInventoryChange;
-
-    public bool HasNumberOfItem(ItemSO item, int numNeeded) => inventory.ContainsKey(item) && inventory[item] >= numNeeded;
-
-    public int NumberHeldOf(ItemSO i) => inventory.ContainsKey(i) ? inventory[i] : 0;
 
     void Start()
     {
@@ -57,6 +49,8 @@ public class InventoryManager : MonoBehaviour
         }
         return false;
     }
+  
+
 
     public int AddItem(string itemName, int quantity, Sprite itemSprite, string itemDescription)
     {
@@ -73,34 +67,6 @@ public class InventoryManager : MonoBehaviour
             }
         }
         return quantity;
-    }
-
-    public void AddToInventory(ItemSO item, int count = 1)
-    {
-        if (!inventory.ContainsKey(item))
-            inventory.Add(item, count);
-
-        else
-            inventory[item] += count;
-
-        onInventoryChange?.Invoke();
- 
-}
-
-    public void RemoveFromInventory(ItemSO item, int count)
-    {
-        if (!inventory.ContainsKey(item))
-            throw new System.Exception("The dictionary doesn't contain that item. How did we get here?");
-
-        if (inventory[item] >= count)
-            inventory[item] -= count;
-        else
-        {
-            Debug.LogWarning($"Inventory contains less that {count} of {item.name}. Setting count to zero");
-            inventory[item] = 0;
-        }
-
-        onInventoryChange?.Invoke();
     }
 
     public void DeselectAllSlots()

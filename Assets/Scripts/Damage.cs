@@ -16,17 +16,18 @@ public class Damage : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Collided");
+            
 
-           // playerMovement.KBCounter = playerMovement.KBTotalTime;
+            // playerMovement.KBCounter = playerMovement.KBTotalTime;
 
-           // if (collision.transform.position.x <= transform.position.x)
-           // {
+            // if (collision.transform.position.x <= transform.position.x)
+            // {
             //    playerMovement.KnockFromRight = true;
             //}
-           // else
-           // {
-               // playerMovement.KnockFromRight = false;
-           // }
+            // else
+            // {
+            // playerMovement.KnockFromRight = false;
+            // }
 
             if (playerHealth == null)
             {
@@ -36,15 +37,6 @@ public class Damage : MonoBehaviour
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-            }
-            if (boatHealth == null)
-            {
-                boatHealth = collision.gameObject.GetComponent<BoatHealth>();
-            }
-
-            if (boatHealth != null)
-            {
-                boatHealth.TakeDamage(damage);
             }
 
 

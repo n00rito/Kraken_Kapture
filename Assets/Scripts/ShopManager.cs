@@ -2,20 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Progress;
 
 public class ShopManager : MonoBehaviour
 {
     public GameObject shopMenu; // Reference to the inventory panel UI
     private bool shopActivated; // Flag to track if the inventory is open
-    public ItemSlot[] itemSlot;
+    public ShopItemSlot[] itemSlot;
 
     public ItemSO[] itemSOs;
+
+    public Collider2D shopZone;
+
+    public Wallet wallet;
+
+    public ItemSO itemSO;
 
 
     void Start()
     {
         shopMenu.SetActive(false);
         shopActivated = false;
+
     }
 
     void Update()
@@ -35,7 +43,38 @@ public class ShopManager : MonoBehaviour
             shopMenu.SetActive(true);
             shopActivated = true;
         }
+
+    }
+
+    public bool BuyItem(string itemName)
+    {
+        if (itemSO != null)
+        {
+            int itemValue = itemSO.price;
+
+            // Check if the player has enough money to buy the item
+            if (wallet.GetMoney() >= itemSO.price)
+            {
+                // Remove money from the wallet equal to the item price
+                wallet.RemoveMoney(itemSO.price);
+                Debug.Log("Bought item: " + itemName);
+                return true; // Item successfully bought
+            }
+            else
+            {
+                Debug.Log("Not enough money to buy item: " + itemName);
+                return false; // Not enough money to buy the item
+            }
+        }
+        else
+        {
+            Debug.Log("ItemSO is null. Cannot buy item.");
+            return false; // ItemSO is null, cannot buy item
         }
     }
+}
+
+
+
 
 

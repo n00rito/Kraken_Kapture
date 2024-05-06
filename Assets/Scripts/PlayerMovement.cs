@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float input;
     private Animator animator;
     public bool isPlayerInside; // Flag to track if the player is in the boat
+    private BoatMovement boatMovement;
     private AudioSource audioSource; // Reference to AudioSource component
 
 
@@ -21,15 +22,39 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>(); // Get AudioSource component
+        boatMovement = GetComponent<BoatMovement>();
         audioSource.clip = walkingClip;
     }
+
+     void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isPlayerInside)
+            {
+                boatMovement.Interact();
+                //animator.SetBool("IsWalking", false);
+            }
+            if (!isPlayerInside)
+            {
+                animator.SetBool("isPlayerInside", false);
+            }
+  
+          
+            else
+            {
+                animator.SetBool("isPlayerInside", false);
+            }
+            }
+        }
+    
 
     private void OnMovement(InputValue value)
     {
         {
             if (isPlayerInside)
             {
-                animator.SetBool("isPlayerInside", true);
+                //animator.SetBool("isPlayerInside", true);
                 animator.SetBool("IsWalking", false);
                 audioSource.Stop();
 
@@ -71,6 +96,6 @@ public class PlayerMovement : MonoBehaviour
         rb.isKinematic = inside;
 
         // Update animation based on player inside the boat
-        animator.SetBool("isPlayerInside", true);
+       animator.SetBool("isPlayerInside", true);
     }
 }

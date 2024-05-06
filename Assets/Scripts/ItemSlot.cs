@@ -114,8 +114,6 @@ public void OnPointerClick(PointerEventData eventData)
         }
     }
 
-
-
     public void OnLeftClick()
     {
         if (thisItemSelected)

@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     public Rigidbody2D enemyRb;
     public float delayTime = .15f;
 
+    public GameObject[] itemDrops;
+
     private void Start()
     {
         enemyRb = GetComponent<Rigidbody2D>();
@@ -24,11 +26,13 @@ public class EnemyHealth : MonoBehaviour
         {
             enemyRb.AddForce(Vector2.left * KBForce, ForceMode2D.Impulse);
         }
-    
 
         enemyHealth -= amount;
-        if(enemyHealth <= 0)
+
+
+            if (enemyHealth <= 0)
         {
+            ItemDrop();
             Destroy(gameObject);
         }
 
@@ -38,5 +42,13 @@ public class EnemyHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(delayTime);
         enemyRb.velocity = Vector2.zero;
+    }
+
+    private void ItemDrop()
+    {
+        for (int i = 0; i < itemDrops.Length; i++)
+        {
+            Instantiate(itemDrops[i], transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+        }
     }
 }
