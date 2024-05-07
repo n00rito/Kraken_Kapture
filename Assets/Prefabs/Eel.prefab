@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3679676744900062510}
   - component: {fileID: 2228749133526304517}
-  - component: {fileID: 8672522184361139970}
   - component: {fileID: 2870560527278710727}
+  - component: {fileID: 8672522184361139970}
   - component: {fileID: 1812145550893463214}
   - component: {fileID: 1670874558940896265}
   - component: {fileID: 3216005829771670847}
-  m_Layer: 0
+  - component: {fileID: 5018186047881063029}
+  m_Layer: 10
   m_Name: Eel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,6 +90,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2870560527278710727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182009245218363702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393c2f9fcefc18c47b0680db8ed2d1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 5
+  enemyRb: {fileID: 1670874558940896265}
+  delayTime: 0.15
+  itemDrops:
+  - {fileID: 2406706697199621820, guid: 2fc0dc892d566b047bf7200cb7706558, type: 3}
 --- !u!114 &8672522184361139970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,24 +121,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
   isChasing: 0
-  chaseDistance: 0
+  chaseDistance: 3
   moveSpeed: 3
---- !u!114 &2870560527278710727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3182009245218363702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393c2f9fcefc18c47b0680db8ed2d1e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHealth: 10
-  enemyRb: {fileID: 1670874558940896265}
-  delayTime: 0.15
-  itemDrops: []
 --- !u!114 &1812145550893463214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b80dc21d4d7d22a4eab4c967f5ff011e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 2
   playerHealth: {fileID: 0}
   boatHealth: {fileID: 0}
   popUpPrefab: {fileID: 4793764857352638731, guid: 4507a6dec01eea0428ba8c469aa9470d, type: 3}
@@ -197,7 +199,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.08432056}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -208,5 +210,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.4375, y: 1.75}
+  m_Size: {x: 2.4375, y: 0.82247925}
   m_EdgeRadius: 0
+--- !u!95 &5018186047881063029
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3182009245218363702}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fa87666b7b208bf4587b7234ea8a0855, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

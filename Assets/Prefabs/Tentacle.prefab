@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 429325878157724418}
   - component: {fileID: 291683624490214952}
   - component: {fileID: 9194832678446348011}
+  - component: {fileID: 4806941921476984724}
   m_Layer: 0
   m_Name: Tentacle
   m_TagString: Untagged
@@ -100,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Kraken Tentacle
-  quantity: 99
+  quantity: 1
   sprite: {fileID: 21300000, guid: 85fcc0f64acaea047a61f009c1c1b0f4, type: 3}
   value: 200
   itemDescription: Halfway there..
@@ -176,3 +177,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4806941921476984724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2500213766192221064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7efd4c2965e488441b9279e3b3ee964f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropForce: 5

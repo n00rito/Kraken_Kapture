@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2670837834711997639}
   - component: {fileID: 9197793327037343578}
   - component: {fileID: 2842467557416927651}
-  - component: {fileID: 2529184617928848652}
   - component: {fileID: 4001544248659590528}
   - component: {fileID: 7957029453890988917}
   - component: {fileID: 2862350366818305460}
+  - component: {fileID: 3281409303812175264}
   m_Layer: 10
   m_Name: Shark
   m_TagString: Untagged
@@ -156,23 +156,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.534791, y: 4.6208267}
   m_EdgeRadius: 0
---- !u!114 &2529184617928848652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6986534214297497012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80dc21d4d7d22a4eab4c967f5ff011e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  playerHealth: {fileID: 0}
-  boatHealth: {fileID: 0}
-  popUpPrefab: {fileID: 0}
-  playerMovement: {fileID: 0}
 --- !u!50 &4001544248659590528
 Rigidbody2D:
   serializedVersion: 4
@@ -214,7 +197,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 0}
   isChasing: 0
-  chaseDistance: 5
+  chaseDistance: 7
   moveSpeed: 2
 --- !u!114 &2862350366818305460
 MonoBehaviour:
@@ -232,5 +215,22 @@ MonoBehaviour:
   enemyRb: {fileID: 4001544248659590528}
   delayTime: 0.15
   itemDrops:
-  - {fileID: 874659524523914129, guid: 144036bb8a0e9ec469e689382ea54b2f, type: 3}
-  - {fileID: 874659524523914129, guid: 144036bb8a0e9ec469e689382ea54b2f, type: 3}
+  - {fileID: 2406706697199621820, guid: 2fc0dc892d566b047bf7200cb7706558, type: 3}
+  - {fileID: 2406706697199621820, guid: 2fc0dc892d566b047bf7200cb7706558, type: 3}
+--- !u!114 &3281409303812175264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6986534214297497012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80dc21d4d7d22a4eab4c967f5ff011e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  playerHealth: {fileID: 0}
+  boatHealth: {fileID: 0}
+  popUpPrefab: {fileID: 4793764857352638731, guid: 4507a6dec01eea0428ba8c469aa9470d, type: 3}
+  playerMovement: {fileID: 0}

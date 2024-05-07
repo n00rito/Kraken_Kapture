@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Dead Jellyfish
   m_EditorClassIdentifier: 
   itemName: Dead Jellyfish
-  statToChange: 0
-  amountToChangeStat: 0
+  statToChange: 1
+  amountToChangeStat: -20
   price: 100

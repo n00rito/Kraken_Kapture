@@ -11,8 +11,8 @@ public class BoatMovement : MonoBehaviour
     private Vector2 movement; // Direction of movemen
     public Rigidbody2D rb; // Rigidbody component of the boat
     private Animator animator; // Animator component of the boat
-    private bool isMovementEnabled = false; // Flag to track if movement is enabled
-    private bool isPlayerInside = false;
+    private bool isMovementEnabled; // Flag to track if movement is enabled
+    private bool isPlayerInside;
     private AudioSource audioSource; // Reference to AudioSource component
 
 
@@ -104,7 +104,10 @@ public class BoatMovement : MonoBehaviour
         if (isPlayerInside)
         {
             movement = Vector2.zero;
-           // animator.SetBool("isPlayerInside", true);
+            animator.SetBool("IsSailing", true);
+            animator.SetBool("isMovementEnabled", true);
+            animator.SetBool("isPlayerInside", true);
+            // animator.SetBool("isPlayerInside", true);
             //animator.SetBool("IsSailing", true);
 
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd569256332998498ae5e9d63b7f15c, type: 3}
   m_Name: Burger
   m_EditorClassIdentifier: 
-  itemName: Burger
+  itemName: Cheeseburger
   statToChange: 1
   amountToChangeStat: 10
   price: 80

@@ -14,6 +14,7 @@ public class Health : MonoBehaviour
     public TextMeshProUGUI healthText;
     Vector2 startPos;
     public AudioClip ouchSound;
+    ExperienceManager experienceManager;
 
     private AudioSource audioSource;
     // public AudioClip ouchClip;
@@ -30,7 +31,9 @@ public class Health : MonoBehaviour
         // audioSource.clip = ouchClip;
     }
 
-            public void TakeDamage(int amount)
+
+
+    public void TakeDamage(int amount)
     {
         health -= amount;
         slider.value = health;
@@ -38,7 +41,6 @@ public class Health : MonoBehaviour
 
         if (health <= 0)
         {
-            Destroy(gameObject);
             SceneManager.LoadScene(1);
         }
     }

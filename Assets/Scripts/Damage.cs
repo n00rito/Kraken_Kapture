@@ -18,7 +18,7 @@ public class Damage : MonoBehaviour
             Debug.Log("Collided");
             
 
-            // playerMovement.KBCounter = playerMovement.KBTotalTime;
+            //playerMovement.KBCounter = playerMovement.KBTotalTime;
 
             // if (collision.transform.position.x <= transform.position.x)
             // {
@@ -34,19 +34,14 @@ public class Damage : MonoBehaviour
                 playerHealth = collision.gameObject.GetComponent<Health>();
             }
 
+            GameObject popUp = Instantiate(popUpPrefab, collision.transform.position, Quaternion.identity);
+            popUp.GetComponentInChildren<TMP_Text>().text = damage.ToString();
             if (playerHealth != null)
             {
                 playerHealth.TakeDamage(damage);
-            }
-
-
-            GameObject popUp = Instantiate(popUpPrefab, collision.transform.position, Quaternion.identity);
-            popUp.GetComponentInChildren<TMP_Text>().text = damage.ToString();
-
-            if (transform.position.x > collision.transform.position.x)
-            {
                 popUp.GetComponent<PopUpDamage>();
             }
+
         }
     }
 }

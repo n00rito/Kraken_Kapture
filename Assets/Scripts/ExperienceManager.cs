@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class ExperienceManager : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class ExperienceManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI experienceText;
     [SerializeField] Slider experienceFill;
     InventoryManager inventory;
-    Wallet wallet;
 
     void Start()
     {
@@ -45,6 +45,7 @@ public class ExperienceManager : MonoBehaviour
         if (currentLevel == 15)
         {
             meleeAttack.weaponDamage = 10;
+
         }
 
         if (currentLevel == 25)
@@ -57,6 +58,7 @@ public class ExperienceManager : MonoBehaviour
             meleeAttack.weaponDamage = 30;
         }
     }
+
 
     public void AddExperience(int amount)
     {

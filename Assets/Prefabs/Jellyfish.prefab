@@ -107,6 +107,7 @@ MonoBehaviour:
   delayTime: 0.15
   itemDrops:
   - {fileID: 8932623947786603096, guid: 98cd6b326d2fb514e9167bff178fa929, type: 3}
+  - {fileID: 1248439200598355807, guid: ac4ab21f1c9efee41b21b7d99b2df0b7, type: 3}
 --- !u!114 &8586626111191554949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,8 +135,8 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
+  m_UseAutoMass: 1
+  m_Mass: 1.3255783
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
             if (isPlayerInside)
             {
                 boatMovement.Interact();
+                audioSource.Stop();
                 //animator.SetBool("IsWalking", false);
             }
             if (!isPlayerInside)
@@ -60,6 +60,14 @@ public class PlayerMovement : MonoBehaviour
 
 
             } // Don't move if the player is inside the boat
+            if (!isPlayerInside)
+            {
+                //animator.SetBool("isPlayerInside", true);
+                animator.SetBool("IsWalking", true);
+                audioSource.Play();
+
+
+            } // Don't move if the p
 
             movement = value.Get<Vector2>();
 
@@ -68,16 +76,15 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetFloat("X", movement.x);
                 animator.SetFloat("Y", movement.y);
                 animator.SetBool("IsWalking", true);
-
-                if (!audioSource.isPlaying)
-                    audioSource.Play();
+                    //audioSource.Play();
             }
         
             else
             {
                 animator.SetBool("IsWalking", false);
                 audioSource.Stop();
-        }
+            }
+            
         }
     }
 
@@ -97,5 +104,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Update animation based on player inside the boat
        animator.SetBool("isPlayerInside", true);
+        audioSource.Stop();
     }
 }
